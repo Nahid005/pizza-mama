@@ -1,22 +1,24 @@
-import { createBrowserRouter } from "react-router"
-import Home from "./ui/Home"
+import {createBrowserRouter} from "react-router"
 import { RouterProvider } from "react-router/dom"
+
+import Layout from "./ui/Layout"
+import Home from "./ui/Home"
 import Menu , {loader as menuLoader} from "./features/menu/Menu"
 import Cart from "./features/cart/Cart"
 import CreateOrder, {action as createOrderAction} from "./features/order/CreateOrder"
 import Order, {loader as orderLoader} from "./features/order/Order"
-import Layout from "./ui/Layout"
 import Error from "./utility/Error"
 
 const router = createBrowserRouter([
   {
+    path: "/",
+    element: <Home />,
+    errorElement: <Error />,
+  },
+  {
     element: <Layout />,
     errorElement: <Error />,
     children: [
-      {
-        path: '/',
-        element: <Home />
-      },
       {
         path: '/menu',
         element: <Menu />,
@@ -44,7 +46,9 @@ const router = createBrowserRouter([
 
 
 function App() {
-  return <RouterProvider router={router}></RouterProvider>
+  return (
+    <RouterProvider router={router} />
+  )
 }
 
 export default App

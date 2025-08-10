@@ -3,19 +3,19 @@ import { useNavigate } from "react-router";
 
 function SearchOrder() {
     const [query, setQuery] = useState('');
-    const navigator = useNavigate()
+    const navigate = useNavigate()
 
     function handleSubmit(e) {
         e.preventDefault()
         if(!query) return;
         
-        navigator(`order/${query}`);
+        navigate(`order/${query}`);
         setQuery('')
     }
     
     return (
-        <form onSubmit={handleSubmit}>
-            <input onChange={(e) => setQuery(e.target.value)} type="text" value={query} />
+        <form onSubmit={handleSubmit} className="w-full">
+            <input className="input w-full" onChange={(e) => setQuery(e.target.value)} type="text" value={query} placeholder="Search with order ID" />
         </form>
     )
 }

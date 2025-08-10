@@ -6,7 +6,7 @@ function Menu() {
   const menus = useLoaderData();
 
   return (
-    <ul>
+    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
       {
         menus.map(pizza => <MenuItem pizza={pizza} key={pizza.id}  />)
       }
@@ -16,6 +16,7 @@ function Menu() {
 
 export async function loader() {
   const menu = await getMenu();
+
   return menu;
 }
 
